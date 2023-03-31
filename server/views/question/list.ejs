@@ -1,0 +1,34 @@
+<% if (typeof displayName == "string" && displayName) { %>
+    <a href="/questions/add" class="btn btn-primary" role="button"><i class="fas fa-plus-circle"></i>&nbsp;Add a Question</a>
+<% } %>
+<br>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th class="text-content col-4">Question</th>
+            <th class="text-content col-2">Survey</th>
+            <% if (typeof displayName == "string" && displayName) { %>
+                <th class="text-content col-1">Edit</th>
+                <th class="text-content col-1">Delete</th>
+            <% } %>
+        </tr>
+    </thead>
+    <tbody>
+        <%for(let count = 0; count < questionList.length; count++) {%>
+            <% let survey_name = ""; %>
+            <% for(let i = 0; i < surveyList.length; i++) {%>
+                <% if (questionList[count].survey_id == surveyList[i]._id) { %>
+                    <%  survey_name = surveyList[i].name; %>
+                <% } %>
+            <% } %>
+            <tr>
+                <td class="text-center col-4"><%= questionList[count].question_content %></td>
+                <td class="text-center col-2"><%= survey_name %></td>
+                <% if (typeof displayName == "string" && displayName) { %>
+                    <td class="text-center col-1"><a href="/questions/edit/<%= questionList[count].id %>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</a></td>
+                    <td class="text-center col-1"><a href="/questions/delete/<%= questionList[count].id %>" class="btn btn-danger"><i class="fas fa-trash-alt"></i>&nbsp;Delete</a></td>
+                <% } %>
+            </tr>
+        <%}%>
+    </tbody>
+</table>

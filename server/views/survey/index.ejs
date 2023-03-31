@@ -1,0 +1,19 @@
+<%-include ../partials/html_head.ejs%>
+    <%-include ../partials/header.ejs%>
+
+        <main class="container">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome to <%= title %> Page </h1>
+                <!-- Import different section based on pages -->
+                <% if (slug.toLowerCase() == "surveys") { %>
+                    <%-include ../survey/list.ejs%>
+                <% } else if (slug.toLowerCase() == "surveys_add") { %>
+                    <%-include ../survey/add.ejs%>
+                <% } else if (slug.toLowerCase() == "surveys_edit") { %>
+                    <%-include ../survey/edit.ejs%>
+                <% } %>
+            </div>
+        </main>
+
+    <%-include ../partials/footer.ejs%>
+<%-include ../partials/html_end.ejs%>

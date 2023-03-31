@@ -1,0 +1,43 @@
+<main class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to <%= title %> Page </h1>
+        <% if (surveyList.length > 0) { %>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-content col-2">Survey Name</th>
+                        <th class="text-content col-4">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(let count = 0; count < surveyList.length; count++) {%>
+                        <tr>
+                            <td class=" col-2"><%= surveyList[count].name %></td>
+                            <td class=" col-4"><%= surveyList[count].description %></td>
+                        </tr>
+                        <tr>
+                            <td class=" col-2">&nbsp;</td>
+                            <td class=" col-4">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-content">Question</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%for(let count = 0; count < questionList.length; count++) {%>
+                                            <tr>
+                                                <td class="text-left"><%= questionList[count].question_content %></td>
+                                            </tr>
+                                        <%}%>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    <%}%>
+                </tbody>
+            </table>
+            
+        <% } %>
+    </div>
+</main>

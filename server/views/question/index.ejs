@@ -1,0 +1,19 @@
+<%-include ../partials/html_head.ejs%>
+    <%-include ../partials/header.ejs%>
+
+        <main class="container">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome to <%= title %> Page </h1>
+                <!-- Import different section based on pages -->
+                <% if (slug.toLowerCase() == "questions") { %>
+                    <%-include ../question/list.ejs%>
+                <% } else if (slug.toLowerCase() == "questions_add") { %>
+                    <%-include ../question/add.ejs%>
+                <% } else if (slug.toLowerCase() == "questions_edit") { %>
+                    <%-include ../question/edit.ejs%>
+                <% } %>
+            </div>
+        </main>
+
+    <%-include ../partials/footer.ejs%>
+<%-include ../partials/html_end.ejs%>

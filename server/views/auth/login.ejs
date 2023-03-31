@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
+    <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel='stylesheet' href='/content/app.css' />
+</head>
+<body>
+    <%-include ../partials/header.ejs%>
+
+<main class="container">
+    <!-- message Area -->
+    <% if (message.length>0){%>
+    <div class="alert alert-danger">
+        <%=message%>
+    </div>
+    <% } %>
+    <div class="row">
+        <div class="0ffert md-4 col-md-4">
+            <h1>PLease</h1>
+            <form method="POST" autocomplete="">
+                <fieldset class="form-group">
+                    <label for="username">username</label>
+                    <input type="text" class="form-control" name="username" name="idå" placeholder="enter member">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="password">password</label>
+                    <input type="password" class="form-control" name="password" name="idå" placeholder="enter member">
+                    <a href="/register"> Register here</a>
+                </fieldset>
+                <fieldset class=" form-gropu text-right">
+                    <input type="submit" class="btn btn-success" value="login">
+                    <a href="/" class="btn btn-warning"><i class="fas fa-undo"></i>&nbsp;Cancel</a>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</main>
+
+    <%-include ../partials/footer.ejs%>
+</body>
+</html>

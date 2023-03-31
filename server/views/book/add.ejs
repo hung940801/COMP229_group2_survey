@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
+    <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel='stylesheet' href='/content/app.css' />
+</head>
+<body>
+    <%-include ../partials/header.ejs%>
+
+    <%-include ../partials/main.ejs%>
+
+    <!-- Content for the Add page of book -->
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="offset-md-3 col-md-6">
+
+                <h1><%=title%></h1>
+                <form class="form" action="/books/add" method="POST">
+                    <div class="form-group">
+                        <label for="nameTextField">Book Title</label>
+                        <input type="text" class="form-control" id="nameTextField" name="name" placeholder="Enter the Book Title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="authorTextField">Book Author</label>
+                        <input type="text" class="form-control" id="authorTextField" name="author" placeholder="Enter the Book Author" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="publishedTextField">Year</label>
+                        <input type="text" class="form-control" id="publishedTextField" name="published" placeholder="Enter the Book Year of Publication" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descriptionTextField">Description</label>
+                        <textarea class="form-control" id="descriptionTextField" name="description" placeholder="Enter the brief of Book Description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="priceTextField">Book Price</label>
+                        <input type="number" class="form-control" id="priceTextField" name="price" placeholder="Enter the Book's Price" required>
+                    </div>
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-edit"></i>&nbsp;Submit</button>
+                    <a href="/books" class="btn btn-warning"><i class="fas fa-undo"></i>&nbsp;Cancel</a>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Content for the Add page of book -->
+
+    <%-include ../partials/footer.ejs%>
+</body>
+</html>
