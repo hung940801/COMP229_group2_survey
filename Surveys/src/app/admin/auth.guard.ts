@@ -9,7 +9,6 @@ import { AuthService } from '../model/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private router: Router, private auth: AuthService) { }
   canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean {
-    console.log(this.auth.authenticated + "---");
     
     let token = localStorage.getItem('token');
     // if (!this.auth.authenticated) {

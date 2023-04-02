@@ -11,6 +11,7 @@ router.post('/login', indexController.processApiLogin);
 
 // // POST router for processing the register page
 // router.post('/register', indexController.processRegisterPage);
+router.post('/register', indexController.processApiRegister);
 
 // // GET to perform userLogout
 // router.get('/logout', indexController.performLogout);

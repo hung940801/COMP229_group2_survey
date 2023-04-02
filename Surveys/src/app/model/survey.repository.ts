@@ -16,7 +16,7 @@ export class SurveyRepository {
     getSurvey(id: string): Survey {
         let s = {};
         for (let i = 0; i < this.surveys.length; i++) {
-            console.log(this.surveys[i].id);
+            // console.log(this.surveys[i].id);
             
             if (this.surveys[i].id == id) {
                 s = this.surveys[i];

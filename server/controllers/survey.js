@@ -67,7 +67,6 @@ module.exports.processSurveyAddPage = (req, res, next) => {
 }
 
 module.exports.apiAddSurvey = (req, res, next) => {
-    console.log(req.body);
     let newSurvey = Survey({
         "name": req.body.name,
         "description": req.body.description,
@@ -139,7 +138,6 @@ module.exports.processSurveyDeletePage = (req, res, next) => {
     });
 }
 module.exports.apiDeleteSurvey = (req, res, next) => {
-    console.log("del del: " + req.params.id);
     let id = req.params.id;
     Survey.remove({_id:id}, (err)=> {
         if (err) {

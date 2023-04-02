@@ -15,19 +15,19 @@ export class HeaderComponent implements OnInit {
   constructor(private auth: AuthService, private datasource: RestDataSource, private router: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
-    if (this.datasource.auth_token != "") {
-      console.log("is undefined");
-    // } else if (this.datasource.auth_token == null) {
-    //   console.log("null");
+    // if (this.datasource.auth_token != "") {
+    //   console.log("is undefined");
+    // // } else if (this.datasource.auth_token == null) {
+    // //   console.log("null");
       
-    } else {
-      console.log(JSON.stringify(this.datasource.auth_token));
+    // } else {
+    //   console.log(JSON.stringify(this.datasource.auth_token));
       
-    }
-    console.log("1. " + this.datasource.auth_token);
-    console.log("2. " + this.auth.authenticated);
-    console.log("3. " + localStorage.getItem('username'));
-    console.log("4. " + JSON.stringify(this.route.snapshot.data));
+    // }
+    // // console.log("1. " + this.datasource.auth_token);
+    // // console.log("2. " + this.auth.authenticated);
+    // // console.log("3. " + localStorage.getItem('username'));
+    // // console.log("4. " + JSON.stringify(this.route.snapshot.data));
     let token = localStorage.getItem('token');
     // if (this.auth.authenticated) {
     if (typeof token != "undefined" && token != "" && token != null) {

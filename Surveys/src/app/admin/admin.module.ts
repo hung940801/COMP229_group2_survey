@@ -9,9 +9,11 @@ import { SurveyAdminComponent } from './survey-admin.component';
 import { SurveyDetailsComponent } from './survey-details.component';
 import { QuestionAdminComponent } from './question-admin.component';
 import { QuestionDetailsComponent } from './question-details.component';
+import { RegisterComponent } from './register.component';
 
 let routing = RouterModule.forChild([
   { path: "auth", component: AuthComponent },
+  { path: "register", component: RegisterComponent },
   {
     path: "main", component: AdminComponent, canActivate: [AuthGuard],
     children: [
@@ -29,7 +31,7 @@ let routing = RouterModule.forChild([
 ]);
 
 @NgModule({
-  declarations: [AuthComponent, AdminComponent, SurveyAdminComponent, SurveyDetailsComponent, QuestionAdminComponent, QuestionDetailsComponent],
+  declarations: [AuthComponent, AdminComponent, SurveyAdminComponent, SurveyDetailsComponent, QuestionAdminComponent, QuestionDetailsComponent, RegisterComponent],
   imports: [
     CommonModule, 
     FormsModule, 

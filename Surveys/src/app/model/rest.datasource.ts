@@ -8,6 +8,7 @@ import { map, switchMap } from "rxjs/operators";
 import { HttpHeaders } from '@angular/common/http';
 import { Survey } from "./survey.model";
 import { Question } from "./question.model";
+import { User } from "./user.model";
 
 const PROTOCOL = "http";
 const PORT = 3000;
@@ -29,6 +30,11 @@ export class RestDataSource {
   // saveOrder(order: Order): Observable<Order> {
   //   return this.http.post<Order>(this.baseUrl + "orders", order);
   // }
+
+  register(reg_user: User): Observable<User> {
+    return this.http.post<any>(this.baseUrl + "api/admin/register", reg_user);
+  }
+
   authenticate(user: string, pass: string): Observable<boolean> {
     
     return this.http.post<any>(this.baseUrl + "api/admin/login", {

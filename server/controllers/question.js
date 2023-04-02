@@ -154,7 +154,6 @@ module.exports.processQuestionDeletePage = (req, res, next) => {
     });
 }
 module.exports.apiDeleteQuestion = (req, res, next) => {
-    console.log("del del: " + req.params.id);
     let id = req.params.id;
     Question.deleteOne({_id:id}, (err)=> {
         if (err) {

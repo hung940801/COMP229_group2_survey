@@ -147,6 +147,23 @@ module.exports.processRegisterPage = (req, res, next) => {
     });
 }
 
+module.exports.processApiRegister = (req, res, next) => {
+    // initialize a user object
+    let newUser = new User({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        displayName: req.body.displayName,
+    });
+    User.register(newUser, req.body.password, (err) => {
+        if (err) {
+            res.status(404).json({ success: false });
+        } else {
+            res.status(200).json({ success: true });
+        }
+    });
+}
+
 module.exports.performLogout = (req, res, next) => {
     req.logout(function(err) {
         if (err) {

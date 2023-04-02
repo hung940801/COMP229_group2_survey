@@ -16,7 +16,7 @@ export class QuestionRepository {
     getQuestion(id: string): Question {
         let s = {};
         for (let i = 0; i < this.questions.length; i++) {
-            console.log(this.questions[i].id);
+            // console.log(this.questions[i].id);
             
             if (this.questions[i].id == id) {
                 s = this.questions[i];
