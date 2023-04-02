@@ -5,7 +5,7 @@
     {{survey.name}}
     </h4>
     <span class="" style="color:blue;">
-        {{survey.id}}
+        {{survey.description}}
     </span>
     <button class="btn btn-warning" [routerLink]="['/admin/main/surveys/edit', survey.id]">Edit</button>
     <button class="btn btn-sm btn-danger" (click)="deleteSurvey(survey)">Delete</button>

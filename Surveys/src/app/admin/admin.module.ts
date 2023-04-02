@@ -7,6 +7,8 @@ import { AuthGuard } from "./auth.guard";
 import { AuthComponent } from './auth.component';
 import { SurveyAdminComponent } from './survey-admin.component';
 import { SurveyDetailsComponent } from './survey-details.component';
+import { QuestionAdminComponent } from './question-admin.component';
+import { QuestionDetailsComponent } from './question-details.component';
 
 let routing = RouterModule.forChild([
   { path: "auth", component: AuthComponent },
@@ -16,6 +18,9 @@ let routing = RouterModule.forChild([
       { path: "surveys/:mode/:id", component: SurveyDetailsComponent },
       { path: "surveys/:mode", component: SurveyDetailsComponent },
       { path: "surveys", component: SurveyAdminComponent },
+      { path: "questions/:mode/:id", component: QuestionDetailsComponent },
+      { path: "questions/:mode", component: QuestionDetailsComponent },
+      { path: "questions", component: QuestionAdminComponent },
       // { path: "orders", component: OrderTableComponent },
       { path: "**", redirectTo: "surveys" }
     ]
@@ -24,7 +29,7 @@ let routing = RouterModule.forChild([
 ]);
 
 @NgModule({
-  declarations: [AuthComponent, AdminComponent, SurveyAdminComponent, SurveyDetailsComponent],
+  declarations: [AuthComponent, AdminComponent, SurveyAdminComponent, SurveyDetailsComponent, QuestionAdminComponent, QuestionDetailsComponent],
   imports: [
     CommonModule, 
     FormsModule, 

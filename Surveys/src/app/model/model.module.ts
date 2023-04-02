@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SurveyRepository } from './survey.repository';
 import { RestDataSource } from './rest.datasource';
 import { AuthService } from './auth.service';
+import { QuestionRepository } from './question.repository';
 
 
 
@@ -13,6 +14,7 @@ import { AuthService } from './auth.service';
     HttpClientModule
   ],
   providers: [
+    QuestionRepository,
     SurveyRepository,
     RestDataSource,
     AuthService

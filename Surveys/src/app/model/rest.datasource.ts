@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
 import { HttpHeaders } from '@angular/common/http';
 import { Survey } from "./survey.model";
+import { Question } from "./question.model";
 
 const PROTOCOL = "http";
 const PORT = 3000;
@@ -18,10 +19,10 @@ export class RestDataSource {
   constructor(private http: HttpClient) {
     this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
   }
-  getSurveys(): Observable<Survey[]> {
-    // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
-    return this.http.get<Survey[]>(this.baseUrl + "api/surveys");
-  }
+  // getSurveys(): Observable<Survey[]> {
+  //   // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
+  //   return this.http.get<Survey[]>(this.baseUrl + "api/surveys");
+  // }
   // getBooks(): Observable<Book[]> {
   //   return this.http.get<Book[]>(this.baseUrl + "books");
   // }
@@ -43,6 +44,10 @@ export class RestDataSource {
     }));
   }
 
+  getSurveys(): Observable<Survey[]> {
+    // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
+    return this.http.get<Survey[]>(this.baseUrl + "api/surveys");
+  }
   saveSurvey(survey: Survey): Observable<Survey> {
     return this.http.post<any>(this.baseUrl + "api/surveys/add", survey);
   }
@@ -52,6 +57,21 @@ export class RestDataSource {
   deleteSurvey(survey: Survey): Observable<Survey> {
     let id = survey.id;
     return this.http.delete<any>(`${this.baseUrl}api/surveys/delete/${id}`);
+  }
+
+  getQuestions(): Observable<Question[]> {
+    // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
+    return this.http.get<Question[]>(this.baseUrl + "api/questions");
+  }
+  saveQuestion(question: Question): Observable<Question> {
+    return this.http.post<any>(this.baseUrl + "api/questions/add", question);
+  }
+  updateQuestion(question: Question): Observable<Question> {
+    return this.http.post<any>(`${this.baseUrl}api/questions/edit`, question);
+  }
+  deleteQuestion(question: Question): Observable<Survey> {
+    let id = question.id;
+    return this.http.delete<any>(`${this.baseUrl}api/questions/delete/${id}`);
   }
   // getOrders(): Observable<Order[]> {
   //   return this.http.get<Order[]>(this.baseUrl + "orders", this.getOptions());

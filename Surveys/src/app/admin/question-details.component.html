@@ -1,0 +1,24 @@
+<div class="bg-primary p-2 text-white" [class.bg-warning]="editing"
+     [class.text-dark]="editing">
+    <h5>{{editing  ? "Edit" : "Create"}} Question</h5>
+</div>
+<form novalidate #form="ngForm" (ngSubmit)="save(form)">
+    <div class="form-group">
+        <label>Question Content</label>
+        <input class="form-control" name="question_content" [(ngModel)]="question.question_content" />
+    </div>
+    <div class="form-group">
+        <label>id</label>
+        <select class="form-control" name="survey_id" id="survey_id" [(ngModel)]="question.survey_id">
+            <option *ngFor="let survey of getSurveys()" value="{{ survey.id }}">
+                {{ survey.name }}
+            </option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary m-1" [class.btn-warning]="editing">
+        {{editing ? "Save" : "Create"}}
+    </button>
+    <button type="reset" class="btn btn-secondary" routerLink="/admin/main/questions">
+        Cancel
+    </button>
+</form>
