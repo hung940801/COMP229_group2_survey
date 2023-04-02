@@ -1,0 +1,12 @@
+<h2>Survey List</h2>
+<button class="btn btn-primary" routerLink="/admin/main/surveys/create">Add new survey</button>
+<div *ngFor ='let survey of getSurveys()' class="card m-1 p-1 bg-light">
+    <h4>
+    {{survey.name}}
+    </h4>
+    <span class="" style="color:blue;">
+        {{survey.id}}
+    </span>
+    <button class="btn btn-warning" [routerLink]="['/admin/main/surveys/edit', survey.id]">Edit</button>
+    <button class="btn btn-sm btn-danger" (click)="deleteSurvey(survey)">Delete</button>
+</div>

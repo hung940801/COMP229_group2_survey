@@ -1,18 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PagesModule } from './pages/pages.module';
+import { StoreFirstGuard } from './store-first.guard';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    // RouterModule,
+    PagesModule,
+    RouterModule.forRoot([
+      {
+        path: "admin",
+        loadChildren: () => import("./admin/admin.module")
+          .then(m => m.AdminModule),
+        canActivate: [StoreFirstGuard]
+      }
+    ])
   ],
-  providers: [],
+  providers: [StoreFirstGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

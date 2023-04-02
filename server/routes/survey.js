@@ -15,6 +15,11 @@ function requireAuth(req, res, next) {
 // Get route for the book list page - read operation
 router.get('/', surveyController.displaySurveyList);
 
+// Get route for the book list page - read operation
+router.get('/api', (req, res) => {
+    res.send('Get All API')
+});
+
 // Get route for displaying the Add Page - CREATE operation
 router.get('/add', requireAuth, surveyController.displaySurveyAddPage);
 
@@ -29,5 +34,8 @@ router.post('/edit/:id', requireAuth, surveyController.processSurveyEditPage);
 
 // GET Route for perform Deletion - DELETE Operation
 router.get('/delete/:id', requireAuth, surveyController.processSurveyDeletePage);
+
+// // Get route for the surveys list api - read operation
+// router.get('/api/surveys/', surveyController.apiGetSurveyList);
 
 module.exports = router;

@@ -1,6 +1,8 @@
 let express = require('express');
 const passport = require('passport');
 let router = express.Router();
+const jwt = require('jsonwebtoken');
+const APP_SECRET = 'Secret';
 
 // create the userModel instance
 let UserModel = require('../models/user');
@@ -65,6 +67,35 @@ module.exports.processLoginPage = (req, res, next) => {
             }
             return res.redirect('/surveys');
         });
+    })(req, res, next);
+}
+
+module.exports.processApiLogin = (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        // server err
+        // if (err) {
+        //     return next(err);
+        // }
+        // check if there is a user login error
+
+        if (!user) {
+            // req.flash('loginMessage', "Authenticate error");
+            // return res.redirect('/login');
+            // res.send({'status': '404 not found.', "success": false})
+            res.status(404).json({ success: false });
+        } else {
+            req.login(user, (err) => {
+                //server error?
+                // if (err) {
+                //     return next(err);
+                // }
+                // return res.redirect('/surveys');
+                // res.send({'status': '200', "success": true})
+                let token = jwt.sign({ data: user.username, expiresIn: '1h' }, APP_SECRET);
+                res.status(200).json({ success: true, token: token, username: user.username });
+                // res.status(200).json({ success: true });
+            });
+        }
     })(req, res, next);
 }
 
