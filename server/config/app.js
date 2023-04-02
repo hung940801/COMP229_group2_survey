@@ -30,6 +30,7 @@ var booksRouter = require('../routes/book');
 var surveysRouter = require('../routes/survey');
 var surveysApiRouter = require('../routes/api/surveyApi');
 var usersApiRouter = require('../routes/api/indexApi');
+var questionsApiRouter = require('../routes/api/questionApi');
 var questionsRouter = require('../routes/question');
 const { User } = require('../models/user');
 
@@ -81,6 +82,7 @@ app.use('/books', booksRouter);
 app.use('/surveys', surveysRouter);
 app.use('/api/surveys', surveysApiRouter);
 app.use('/api/admin', usersApiRouter);
+app.use('/api/questions', questionsApiRouter);
 app.use('/questions', questionsRouter);
 
 // catch 404 and forward to error handler
