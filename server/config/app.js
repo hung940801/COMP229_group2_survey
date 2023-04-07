@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors');
 
 // moduela for authentication
 let session = require('express-session');
@@ -28,10 +29,22 @@ var indexRouter = require('../routes/index');
 var usersRouter = require('../routes/users');
 var booksRouter = require('../routes/book');
 var surveysRouter = require('../routes/survey');
+var surveysApiRouter = require('../routes/api/surveyApi');
+var usersApiRouter = require('../routes/api/indexApi');
+var questionsApiRouter = require('../routes/api/questionApi');
 var questionsRouter = require('../routes/question');
 const { User } = require('../models/user');
 
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}
+
 var app = express();
+
+app.use(allowCrossDomain);
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -68,6 +81,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/books', booksRouter);
 app.use('/surveys', surveysRouter);
+app.use('/api/surveys', surveysApiRouter);
+app.use('/api/admin', usersApiRouter);
+app.use('/api/questions', questionsApiRouter);
 app.use('/questions', questionsRouter);
 
 // catch 404 and forward to error handler

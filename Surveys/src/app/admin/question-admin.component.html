@@ -1,0 +1,12 @@
+<h2>Question List</h2>
+<button class="btn btn-primary" routerLink="/admin/main/questions/create">Add new question</button>
+<div *ngFor ='let question of questions' class="card m-1 p-1 bg-light">
+    <h4>
+    {{question.question_content}}
+    </h4>
+    <span class="" style="color:blue;">
+        {{question.id}}
+    </span>
+    <button class="btn btn-warning" [routerLink]="['/admin/main/questions/edit', question.id]">Edit</button>
+    <button class="btn btn-sm btn-danger" (click)="deleteQuestion(question)">Delete</button>
+</div>

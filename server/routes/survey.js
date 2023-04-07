@@ -15,6 +15,11 @@ function requireAuth(req, res, next) {
 // Get route for the book list page - read operation
 router.get('/', surveyController.displaySurveyList);
 
+// Get route for the book list page - read operation
+router.get('/api', (req, res) => {
+    res.send('Get All API')
+});
+
 // Get route for displaying the Add Page - CREATE operation
 router.get('/add', requireAuth, surveyController.displaySurveyAddPage);
 

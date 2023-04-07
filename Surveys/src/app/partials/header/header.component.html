@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="/">COM229</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home"><i class="fas fa-lg fa-laptop-house"></i>Home</a>
+        </li>
+        <li *ngIf="isLoggedin" class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin/main/surveys"><i class="fas fa-lg fa-laptop-house"></i>Surveys</a>
+        </li>
+        <li *ngIf="isLoggedin" class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin/main/questions"><i class="fas fa-lg fa-laptop-house"></i>Questions</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="isLoggedin" class="nav-link active" aria-current="page" href="/admin/main">
+            <i class="fas fa-lg fa-laptop-house"></i>
+            {{ username }}, 
+            <a href=""  (click)="logout()">Logout</a>
+          </a>
+          <a *ngIf="!isLoggedin" class="nav-link active" aria-current="page" href="/admin/auth"><i class="fas fa-lg fa-laptop-house"></i>Login</a>
+        </li>
+      </ul>
+
+  </div>
+</nav>
