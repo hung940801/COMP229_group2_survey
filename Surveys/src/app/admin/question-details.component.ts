@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Question } from '../model/question.model';
 import { QuestionRepository } from '../model/question.repository';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,26 +11,40 @@ import { Survey } from '../model/survey.model';
   templateUrl: './question-details.component.html',
   styleUrls: ['./question-details.component.css']
 })
-export class QuestionDetailsComponent {
+export class QuestionDetailsComponent implements OnInit {
   editing: boolean = false;
   question: Question = new Question();
+  surveys!: any[];
+  questions: any = [];
+  questionToEdit!: Question;
   constructor(private repository: QuestionRepository,
     private surveyRepository: SurveyRepository,
     private router: Router,
     activeRoute: ActivatedRoute) {
     this.editing = activeRoute.snapshot.params["mode"] == "edit";
     if (this.editing) {
-      Object.assign(this.question, repository.getQuestion(activeRoute.snapshot.params["id"]));
+      this.repository.getQuestion(activeRoute.snapshot.params["id"]).subscribe(data => {
+        Object.assign(this.question, data);
+      });
     }
   }
-  getSurveys(): Survey[] {
-    return this.surveyRepository.getSurveys();
+  ngOnInit(): void {
+    this.getSurveys();
+    this.getQuestions();
+  }
+  getQuestions() {
+    this.repository.getQuestions().subscribe(data => {
+      this.questions = data;
+    });
+  }
+  getSurveys() {
+    return this.surveyRepository.getSurveys().subscribe(data => {
+      this.surveys = data;
+    });
   }
   save(form: NgForm) {
-    this.repository.saveQuestion(this.question);
-    this.router.navigateByUrl("/admin/main");
-    setTimeout(() => {
-      this.router.navigateByUrl("/admin/main/questions");
-    }, 500);
+    this.repository.saveQuestion(this.question).subscribe(data => {;
+      this.router.navigate(['/admin/main/questions']);
+    });
   }
 }

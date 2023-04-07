@@ -47,6 +47,35 @@ module.exports.apiGetSurveyList = (req, res, next) => {
     });
 }
 
+module.exports.apiGetSurveyByID = (req, res, next) => {
+    let id = req.params.id;
+    Survey.findById({_id:id}, (err, surveyToEdit)=> {
+        // let list = []
+        // for (let i = 0; i < surveyList.length; i++) {
+        //     s = {
+        //         "id": surveyList[i]._id,
+        //         "name": surveyList[i].name,
+        //         "description": surveyList[i].description,
+        //     }
+        //     list.push(s);
+        // }
+        // if (err) 
+        // {
+        //     // res.status(500).send({
+        //     //     message:
+        //     //     err.message || "Some error occurred while retrieving tutorials."
+        //     // });
+        // } 
+        // else 
+        // {
+            // console.log(surveyList);
+            // res.send(list);
+            // res.send('Get All API')
+        // }
+        res.send(surveyToEdit);
+    });
+}
+
 module.exports.displaySurveyAddPage = (req, res, next) => {
     res.render('../views/survey/index', {title: "add Survey", displayName: req.user?req.user.displayName:'', slug: 'surveys_add'});
 }

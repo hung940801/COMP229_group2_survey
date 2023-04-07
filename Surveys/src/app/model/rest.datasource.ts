@@ -54,6 +54,10 @@ export class RestDataSource {
     // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
     return this.http.get<Survey[]>(this.baseUrl + "api/surveys");
   }
+  getSurveyByID(survey: string): Observable<Survey> {
+    // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
+    return this.http.get<Survey>(this.baseUrl + `api/surveys/get/${survey}`);
+  }
   saveSurvey(survey: Survey): Observable<Survey> {
     return this.http.post<any>(this.baseUrl + "api/surveys/add", survey);
   }
@@ -68,6 +72,10 @@ export class RestDataSource {
   getQuestions(): Observable<Question[]> {
     // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
     return this.http.get<Question[]>(this.baseUrl + "api/questions");
+  }
+  getQuestionByID(question: string): Observable<Question> {
+    // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
+    return this.http.get<Question>(this.baseUrl + `api/questions/get/${question}`);
   }
   saveQuestion(question: Question): Observable<Question> {
     return this.http.post<any>(this.baseUrl + "api/questions/add", question);

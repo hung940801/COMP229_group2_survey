@@ -25,6 +25,7 @@ router.post('/add', questionController.apiAddQuestion);
 
 // // Get Route for displaying the Edit page - Update Operation
 // router.get('/edit/:id', requireAuth, questionController.displayQuestionEditPage);
+router.get('/get/:id', questionController.apiGetQuestionByID);
 
 // // POST Route for processing the Edit page - UPDATE operation
 // router.post('/edit/:id', requireAuth, questionController.processQuestionEditPage);

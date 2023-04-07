@@ -1,45 +1,43 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
 import { Question } from "./question.model";
 import { RestDataSource } from "./rest.datasource";
 
 @Injectable()
 export class QuestionRepository {
     private questions: Question[] = [];
-    constructor(private dataSource: RestDataSource) {
-        dataSource.getQuestions().subscribe(data => {
-            this.questions = data;
-        });
+    question!: Question;
+    constructor(private dataSource: RestDataSource, private router: Router) {
     }
-    getQuestions(): Question[] {
-        return this.questions;
+    getQuestions(): Observable<any[]> {
+        return this.dataSource.getQuestions();
     }
-    getQuestion(id: string): Question {
-        let s = {};
-        for (let i = 0; i < this.questions.length; i++) {
-            // console.log(this.questions[i].id);
-            
-            if (this.questions[i].id == id) {
-                s = this.questions[i];
-            }
-        }
-        return s;
+    getQuestion(id: string): Observable<any> {
+        return this.dataSource.getQuestionByID(id);
     }
-    saveQuestion(question: Question) {
-        if (question.id == null || question.id == "") {
-            this.dataSource.saveQuestion(question).subscribe((p: Question) => this.questions.push(p));
-        } else {
-            this.dataSource.updateQuestion(question)
-                .subscribe(p => {
-                this.questions.splice(this.questions.
-                    findIndex(p => p.id == question.id), 1, question);
-                });
-        }
+    saveQuestion(question: Question): Observable<any> {
+        // if (question.id == null || question.id == "") {
+            return this.dataSource.saveQuestion(question)
+            // .subscribe((p: Question) => {
+                // this.questions.push(p)
+                // this.getQuestions_2();
+                // this.router.navigate(['/admin/main/questions']);
+            // });
+        // } else {
+        //     this.dataSource.updateQuestion(question)
+        //         .subscribe(p => {
+        //         this.questions.splice(this.questions.
+        //             findIndex(p => p.id == question.id), 1, question);
+        //         });
+        // }
     }
-    deleteQuestion(question: Question) {
-        let id = question.id;
-        this.dataSource.deleteQuestion(question).subscribe(p => {
-            this.questions.splice(this.questions.
-                findIndex(p => p.id == id), 1);
-        })
+    deleteQuestion(question: Question): Observable<any> {
+        // let id = question.id;
+        // this.dataSource.deleteQuestion(question).subscribe(p => {
+        //     this.questions.splice(this.questions.
+        //         findIndex(p => p.id == id), 1);
+        // })
+        return this.dataSource.deleteQuestion(question);
     }
 }

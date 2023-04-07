@@ -10,14 +10,17 @@ import { PageIndexComponent } from 'src/app/partials/page-index/page-index.compo
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent extends PageIndexComponent implements OnInit {
+  surveys!: any[];
   constructor(route: ActivatedRoute, private repository: SurveyRepository) {
     super(route);
   }
-  override ngOnInit(): void {
-      
+  override ngOnInit() {
+    this.getSurveys();
   }
 
-  get surveys(): Survey[] {
-    return this.repository.getSurveys();
+  getSurveys() {
+    return this.repository.getSurveys().subscribe(data => {
+      this.surveys = data;
+    });
   }
 }

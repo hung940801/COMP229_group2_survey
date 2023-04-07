@@ -1,6 +1,6 @@
 <h2>Question List</h2>
 <button class="btn btn-primary" routerLink="/admin/main/questions/create">Add new question</button>
-<div *ngFor ='let question of getQuestions()' class="card m-1 p-1 bg-light">
+<div *ngFor ='let question of questions' class="card m-1 p-1 bg-light">
     <h4>
     {{question.question_content}}
     </h4>

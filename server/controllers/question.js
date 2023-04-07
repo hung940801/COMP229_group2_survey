@@ -43,6 +43,22 @@ module.exports.apiGetQuestionList = (req, res, next) => {
     });
 }
 
+module.exports.apiGetQuestionByID = (req, res, next) => {
+    let id = req.params.id;
+    Question.findById({_id:id}, (err, questionToEdit)=> {
+        // let list = {}
+        // for (let i = 0; i < questionList.length; i++) {
+        //     s = {
+        //         "id": questionList[i]._id,
+        //         "question_content": questionList[i].question_content,
+        //         "survey_id": questionList[i].survey_id,
+        //     }
+        //     list = s;
+        // }
+        res.send(questionToEdit);
+    });
+}
+
 module.exports.displayQuestionAddPage = (req, res, next) => {
     Survey.find((err, surveyList)=> {
         if (err) 

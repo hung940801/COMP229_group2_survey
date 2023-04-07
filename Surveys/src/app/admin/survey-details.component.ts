@@ -17,11 +17,15 @@ export class SurveyDetailsComponent {
     activeRoute: ActivatedRoute) {
     this.editing = activeRoute.snapshot.params["mode"] == "edit";
     if (this.editing) {
-      Object.assign(this.survey, repository.getSurvey(activeRoute.snapshot.params["id"]));
+      // Object.assign(this.survey, repository.getSurvey(activeRoute.snapshot.params["id"]));
+      this.repository.getSurvey(activeRoute.snapshot.params["id"]).subscribe(data => {
+        Object.assign(this.survey, data);
+      });
     }
   }
   save(form: NgForm) {
-    this.repository.saveSurvey(this.survey);
-    this.router.navigateByUrl("/admin/main/");
+    this.repository.saveSurvey(this.survey).subscribe(data => {
+      this.router.navigate(['/admin/main/surveys']);
+    });
   }
 }

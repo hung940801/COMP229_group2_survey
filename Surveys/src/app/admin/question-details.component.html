@@ -10,7 +10,7 @@
     <div class="form-group">
         <label>id</label>
         <select class="form-control" name="survey_id" id="survey_id" [(ngModel)]="question.survey_id">
-            <option *ngFor="let survey of getSurveys()" value="{{ survey.id }}">
+            <option *ngFor="let survey of surveys" value="{{ survey.id }}">
                 {{ survey.name }}
             </option>
         </select>
