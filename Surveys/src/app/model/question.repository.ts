@@ -35,6 +35,9 @@ export class QuestionRepository {
         //         });
         // }
     }
+    updateQuestion(question: Question): Observable<any> {
+        return this.dataSource.updateQuestion(question)
+    }
     deleteQuestion(question: Question): Observable<any> {
         // let id = question.id;
         // this.dataSource.deleteQuestion(question).subscribe(p => {

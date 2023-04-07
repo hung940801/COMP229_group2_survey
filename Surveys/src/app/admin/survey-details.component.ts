@@ -12,20 +12,33 @@ import { NgForm } from '@angular/forms';
 export class SurveyDetailsComponent {
   editing: boolean = false;
   survey: Survey = new Survey();
+  survey_id: string = ""
   constructor(private repository: SurveyRepository,
     private router: Router,
     activeRoute: ActivatedRoute) {
     this.editing = activeRoute.snapshot.params["mode"] == "edit";
     if (this.editing) {
       // Object.assign(this.survey, repository.getSurvey(activeRoute.snapshot.params["id"]));
+      this.survey_id = activeRoute.snapshot.params["id"];
       this.repository.getSurvey(activeRoute.snapshot.params["id"]).subscribe(data => {
-        Object.assign(this.survey, data);
+        // Object.assign(this.survey, data);
+        this.survey = new Survey(
+          data._id,
+          data.name,
+          data.description
+        )
       });
     }
   }
   save(form: NgForm) {
-    this.repository.saveSurvey(this.survey).subscribe(data => {
-      this.router.navigate(['/admin/main/surveys']);
-    });
+    if (this.editing) {
+      this.repository.updateSurvey(this.survey).subscribe(data => {
+        this.router.navigate(['/admin/main/surveys']);
+      });
+    }else {
+      this.repository.saveSurvey(this.survey).subscribe(data => {
+        this.router.navigate(['/admin/main/surveys']);
+      });
+    }
   }
 }

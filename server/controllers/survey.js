@@ -143,7 +143,7 @@ module.exports.processSurveyEditPage = (req, res, next) => {
 module.exports.apiEditSurvey = (req, res, next) => {
     let id = req.body.id;
     let updatedSurvey = Survey({
-        "_id": id,
+        // "_id": id,
         "name": req.body.name,
         "description": req.body.description,
     });

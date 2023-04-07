@@ -45,6 +45,9 @@ export class SurveyRepository {
         //         });
         // }
     }
+    updateSurvey(survey: Survey): Observable<any> {
+        return this.dataSource.updateSurvey(survey);
+    }
     deleteSurvey(survey: Survey): Observable<any> {
         // let id = survey.id;
         // this.dataSource.deleteSurvey(survey).subscribe(p => {

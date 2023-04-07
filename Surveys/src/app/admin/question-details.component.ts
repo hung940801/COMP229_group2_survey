@@ -24,7 +24,12 @@ export class QuestionDetailsComponent implements OnInit {
     this.editing = activeRoute.snapshot.params["mode"] == "edit";
     if (this.editing) {
       this.repository.getQuestion(activeRoute.snapshot.params["id"]).subscribe(data => {
-        Object.assign(this.question, data);
+        // Object.assign(this.question, data);
+        this.question = new Question(
+          data._id,
+          data.question_content,
+          data.survey_id
+        )
       });
     }
   }
@@ -43,8 +48,14 @@ export class QuestionDetailsComponent implements OnInit {
     });
   }
   save(form: NgForm) {
-    this.repository.saveQuestion(this.question).subscribe(data => {;
-      this.router.navigate(['/admin/main/questions']);
-    });
+    if (this.editing) {
+      this.repository.updateQuestion(this.question).subscribe(data => {;
+        this.router.navigate(['/admin/main/questions']);
+      });
+    } else {
+      this.repository.saveQuestion(this.question).subscribe(data => {;
+        this.router.navigate(['/admin/main/questions']);
+      });
+    }
   }
 }

@@ -159,7 +159,6 @@ module.exports.processQuestionEditPage = (req, res, next) => {
 }
 
 module.exports.apiEditQuestion = (req, res, next) => {
-    console.log(req.body.id);
     let id = req.body.id;
     let updatedQuestion = Question({
         "_id": id,
@@ -168,6 +167,7 @@ module.exports.apiEditQuestion = (req, res, next) => {
     });
     Question.updateOne({_id:id}, updatedQuestion, (err)=>{
         if (err) {
+            console.log(err);
             res.status(404).json({ success: false });
         } else {
             res.status(200).json({ success: true });
