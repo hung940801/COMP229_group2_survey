@@ -7,14 +7,14 @@ import { RouterModule } from '@angular/router';
 import { PartialsModule } from '../partials/partials.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { ModelModule } from '../model/model.module';
-// import { SurveyQuestionComponent } from './survey-question/survey-question.component';
+import { SurveyQuestionComponent } from './survey-question/survey-question.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    // SurveyQuestionComponent,
+    SurveyQuestionComponent,
   ],
   imports: [
     CommonModule,

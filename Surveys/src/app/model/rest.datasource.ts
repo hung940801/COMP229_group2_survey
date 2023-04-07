@@ -77,6 +77,10 @@ export class RestDataSource {
     // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
     return this.http.get<Question>(this.baseUrl + `api/questions/get/${question}`);
   }
+  getQuestionsBySurvey(survey_id: string): Observable<Question[]> {
+    // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
+    return this.http.get<Question[]>(this.baseUrl + `api/questions/getBySurvey/${survey_id}`);
+  }
   saveQuestion(question: Question): Observable<Question> {
     return this.http.post<any>(this.baseUrl + "api/questions/add", question);
   }

@@ -1,0 +1,10 @@
+<div class="container">
+    <h2>{{survey.name}}</h2>
+    <div class="">
+        <div *ngFor ='let question of questions' class="card m-1 p-1 bg-light">
+            <h4>
+                {{question.question_content}}
+            </h4>
+        </div>
+    </div>
+</div>

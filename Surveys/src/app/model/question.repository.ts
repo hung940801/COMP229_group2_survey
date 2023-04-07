@@ -16,6 +16,9 @@ export class QuestionRepository {
     getQuestion(id: string): Observable<any> {
         return this.dataSource.getQuestionByID(id);
     }
+    getQuestionsBySurvey(survey_id: string): Observable<any[]> {
+        return this.dataSource.getQuestionsBySurvey(survey_id);
+    }
     saveQuestion(question: Question): Observable<any> {
         // if (question.id == null || question.id == "") {
             return this.dataSource.saveQuestion(question)
