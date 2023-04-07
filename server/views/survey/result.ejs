@@ -1,0 +1,121 @@
+<div style="padding:2rem 2rem 20rem 1rem">
+
+
+<% for(let i = 0; i < surveyList.length; i++) {%>
+<div>
+ <h2><%=surveyList[i].name%></h2>
+ <!-- questions -->
+ <%
+ let survey_id=surveyList[i]._id;
+ let questions=surveyQuestions[survey_id];
+ %>
+
+   <% for (let j=0; j< questions.length;j++) { %>
+ <p>
+    <%
+      let question_id=questions[j];  
+      let rec_id=survey_id+"_"+question_id;
+      
+    %>
+    <%=j+1;%>. <%=questionMap[question_id]%>
+
+    
+    
+    <ul>
+        <li> 
+            <%
+             let a = scoresCnt[rec_id+'_'+'1'];
+             let b = answersCnt[rec_id];
+             let c=0;
+             if(a==''|| b=='' || a==' ' || b==' ' || typeof(a)==='undefined'|| typeof(b)==='undefined') {
+                c=0;
+             }else{
+                c=Math.ceil(a/b*100);
+             }  
+            %>
+            Strong Disagree 
+            <div style=""><%=c%>%</div>
+               
+            <div style="margin:2rem;background:#58A5C4;height: 5px;width: <%=c%>%"></div>
+               
+              
+          
+        </li>
+        <li>
+            <%
+             a = scoresCnt[rec_id+'_'+'2'];
+             
+             
+             if(a==''|| b=='' || a==' ' || b==' ' || typeof(a)==='undefined'|| typeof(b)==='undefined') {
+                c=0;
+             }else{
+                c=Math.ceil(a/b*100);
+             }  
+            %>
+        
+            Disagree 
+            <div style=""><%=c%>%</div>
+               
+            <div style="margin:2rem;background:#58A5C4;height: 5px;width: <%=c%>%"></div>
+        
+        </li>
+        <li>
+         <%
+             a = scoresCnt[rec_id+'_'+'3'];
+             
+             
+             if(a==''|| b=='' || a==' ' || b==' ' || typeof(a)==='undefined'|| typeof(b)==='undefined') {
+                c=0;
+             }else{
+                c=Math.ceil(a/b*100);
+             }  
+            %>
+         
+         Neutral 
+         <div style=""><%=c%>%</div>
+               
+            <div style="margin:2rem;background:#58A5C4;height: 5px;width: <%=c%>%"></div>
+         </li>
+        <li>
+         <%
+             a = scoresCnt[rec_id+'_'+'3'];
+             
+             
+             if(a==''|| b=='' || a==' ' || b==' ' || typeof(a)==='undefined'|| typeof(b)==='undefined') {
+                c=0;
+             }else{
+                c=Math.ceil(a/b*100);
+             }  
+            %>
+         
+         Agree 
+         <div style=""><%=c%>%</div>
+               
+         <div style="margin:2rem;background:#58A5C4;height: 5px;width: <%=c%>%"></div>
+         </li>
+        <li>
+         <%
+             a = scoresCnt[rec_id+'_'+'2'];
+             
+             
+             if(a==''|| b=='' || a==' ' || b==' ' || typeof(a)==='undefined'|| typeof(b)==='undefined') {
+                c=0;
+             }else{
+                c=Math.ceil(a/b*100);
+             }  
+            %>
+         
+         Strongly Agree 
+         <div style=""><%=c%>%</div>
+               
+         <div style="margin:2rem;background:#58A5C4;height: 5px;width: <%=c%>%"></div>
+      </li>
+        </ul>
+
+ </p>    
+   <%}%>
+</div>
+ <% } %>   
+
+
+</div>

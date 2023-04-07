@@ -35,7 +35,7 @@ router.post('/edit/:id', requireAuth, surveyController.processSurveyEditPage);
 // GET Route for perform Deletion - DELETE Operation
 router.get('/delete/:id', requireAuth, surveyController.processSurveyDeletePage);
 
-// // Get route for the surveys list api - read operation
-// router.get('/api/surveys/', surveyController.apiGetSurveyList);
+// Get route for displaying the result Page - View operation
+router.get('/result', requireAuth, surveyController.displaySurveyResultPage);
 
 module.exports = router;
