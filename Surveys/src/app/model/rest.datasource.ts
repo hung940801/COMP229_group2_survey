@@ -68,6 +68,14 @@ export class RestDataSource {
     let id = survey.id;
     return this.http.delete<any>(`${this.baseUrl}api/surveys/delete/${id}`);
   }
+  doSurvey(survey: Survey, survey_questions: any[]): Observable<any> {
+    let id = survey.id;
+    let submitted = {
+      survey_id: id,
+      questions: survey_questions
+    }
+    return this.http.post<any>(`${this.baseUrl}api/surveys/doSurvey`, submitted);
+  }
 
   getQuestions(): Observable<Question[]> {
     // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");

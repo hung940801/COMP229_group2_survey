@@ -178,6 +178,25 @@ module.exports.apiDeleteSurvey = (req, res, next) => {
     });
 }
 
+module.exports.apiDoSurvey = (req, res, next) => {
+    console.log(req.body);
+    let survey_id = req.body.survey_id;
+    let questions = req.body.questions;
+    questions.map((quest, index) => {
+        let newScore = Score({
+            "question_id": quest.id,
+            "score": quest.answer,
+            "survey_id": survey_id,
+        });
+        Score.create(newScore, (err, score) => {
+            if (err) {
+                console.log(err);
+            }
+        })
+    });
+    res.status(200).json({ success: true });
+}
+
 module.exports.displaySurveyResultPage = (req, res, next) => {
     console.log("*********************");
     console.log("*** Show result: ***");

@@ -53,4 +53,10 @@ export class SurveyRepository {
         // })
         return this.dataSource.deleteSurvey(survey);
     }
+
+    doSurvey(survey: Survey, survey_questions: any[]) {
+        // console.log(survey.id);
+        
+        return this.dataSource.doSurvey(survey, survey_questions);
+    }
 }

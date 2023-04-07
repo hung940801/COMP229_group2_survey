@@ -39,6 +39,8 @@ router.post('/edit', surveyController.apiEditSurvey);
 // // GET Route for perform Deletion - DELETE Operation
 router.delete('/delete/:id', surveyController.apiDeleteSurvey);
 
+router.post('/doSurvey', surveyController.apiDoSurvey);
+
 // // Get route for the surveys list api - read operation
 // router.get('/api/surveys/', surveyController.apiGetSurveyList);
 
