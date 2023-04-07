@@ -117,7 +117,7 @@ module.exports.displaySurveyEditPage = (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
-            res.render('survey/index', {title: "Edit a Survey", displayName: req.user?req.user.displayName:'', slug: 'surveys_edit'});
+            res.render('survey/index', {title: "Edit a Survey", survey: surveyToEdit, displayName: req.user?req.user.displayName:'', slug: 'surveys_edit'});
         }
     })
 
