@@ -1,0 +1,31 @@
+<%- include('../partials/header'); -%>
+<%- include('../partials/html_head'); -%>
+<h1>Welcome for doing survey</h1>
+
+
+
+
+
+
+
+<form class="form" action="" method="POST" style="padding-bottom:5rem;">
+    <input type="hidden" name="survey_id" value="<%=survey_id %>" />
+    <%for(let count = 0; count < questionList.length; count++) {%>
+<div style="margin:5rem 2rem;padding:3rem">
+<p><%=(count+1)%>. <%=questionList[count].question_content%></p>
+
+<p><input type="radio" name="<%=questionList[count]._id%>" value="1"/> Strongly disagree</p>
+<p><input type="radio" name="<%=questionList[count]._id%>" value="2"/> Disagree</p>
+<p><input type="radio" name="<%=questionList[count]._id%>" value="3"/> Neutral</p>
+<p><input type="radio" name="<%=questionList[count]._id%>" value="4"/> Agree </p>
+<p><input type="radio" name="<%=questionList[count]._id%>" value="5"/> Strongly agreed</p>
+</div>    
+<% } %>
+<p>
+    <button class="btn btn-primary" type="submit"><i class="fas fa-edit"></i>submit</button>
+</p>
+</form>    
+
+
+<%- include('../partials/html_end'); -%>
+<%- include('../partials/footer'); -%>
