@@ -30,6 +30,10 @@ export class SurveyRepository {
         return this.dataSource.getSurveyByID(id);
     }
 
+    getSurveyResult(id: string): Observable<any> {
+        return this.dataSource.getSurveyResult(id);
+    }
+
     saveSurvey(survey: Survey): Observable<any> {
         return this.dataSource.saveSurvey(survey);
         // if (survey.id == null || survey.id == "") {
