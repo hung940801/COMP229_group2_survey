@@ -32,6 +32,8 @@ router.post('/add', surveyController.apiAddSurvey);
 // router.get('/edit/:id', requireAuth, surveyController.displaySurveyEditPage);
 router.get('/get/:id', surveyController.apiGetSurveyByID);
 
+router.get('/getResult/:id', surveyController.apiGetSurveyResult);
+
 // // POST Route for processing the Edit page - UPDATE operation
 // router.post('/edit/:id', requireAuth, surveyController.processSurveyEditPage);
 router.post('/edit', surveyController.apiEditSurvey);

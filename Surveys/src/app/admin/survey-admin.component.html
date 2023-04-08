@@ -10,6 +10,7 @@
         </span>
     </div>
     <div class="survey-action">
+        <button class="btn btn-primary" [routerLink]="['/admin/main/surveys/getResult', survey.id]"><i class="fa-solid fa-square-poll-vertical"></i>&nbsp;View Result</button>
         <button class="btn btn-warning" [routerLink]="['/admin/main/surveys/edit', survey.id]">Edit</button>
         <button class="btn btn-danger" (click)="deleteSurvey(survey)">Delete</button>
     </div>

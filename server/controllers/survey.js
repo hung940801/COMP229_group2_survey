@@ -268,3 +268,52 @@ module.exports.displaySurveyResultPage = (req, res, next) => {
         });
     });
 }
+
+module.exports.apiGetSurveyResult = (req, res, next) => {
+    let survey_id = req.params.id;
+    let questions_result = {};
+    Survey.findById({_id:survey_id}, (err, survey)=> {
+        Question.find({survey_id:survey_id}, (err, questions) => {
+            Score.find({survey_id:survey_id}, (err, score_set) => {
+                let questionRes = [];
+                questions.map((question, index) => {
+                    let answerCount = 0;
+                    let answer = {
+                        'ans_1': 0,
+                        'ans_2': 0,
+                        'ans_3': 0,
+                        'ans_4': 0,
+                        'ans_5': 0,
+                    };
+                    score_set.map((score, ind) => {
+                        if (question._id == score.question_id) {
+                            s = 'ans_' + score.score;
+                            if (typeof answer[s] == 'undefined') {
+                                if (score.score != null) {
+                                    answer[s] = 1
+                                }
+                            } else {
+                                if (s != null) {
+                                    answer[s] += 1
+                                }
+                            }
+                            answerCount += 1;
+                        }
+                    })
+                    questionRes.push({
+                        question_id: question._id,
+                        details: question,
+                        answerCount: answerCount,
+                        result: answer
+                    })
+                })
+                questions_result = {
+                    survey: survey,
+                    questions: questionRes,
+                };
+                // console.log(questions_result);
+                res.send(questions_result);
+            });
+        });
+    });
+}
