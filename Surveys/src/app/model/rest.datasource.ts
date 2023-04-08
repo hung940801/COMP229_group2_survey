@@ -60,6 +60,9 @@ export class RestDataSource {
     // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
     return this.http.get<Survey>(this.baseUrl + `api/surveys/get/${survey}`);
   }
+  getSurveyResult(survey: string): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `api/surveys/getResult/${survey}`);
+  }
   saveSurvey(survey: Survey): Observable<Survey> {
     return this.http.post<any>(this.baseUrl + "api/surveys/add", survey);
   }

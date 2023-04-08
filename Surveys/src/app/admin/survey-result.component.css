@@ -1,0 +1,27 @@
+.survey-header {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.question-result-wrapper {
+    margin-bottom: 40px;
+}
+.question-result-wrapper .question-result {
+    margin-bottom: 30px;
+}
+.question-result-wrapper .question-result .question-content {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.question-result-wrapper .question-result .total-answer-count {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.question-result-wrapper .question-result .result .result-answer .result-answer-label {
+    min-width: 150px;
+    display: inline-block;
+}
+.question-result-wrapper .question-result .result .result-answer .result-answer-rate {
+    min-width: 150px;
+}
