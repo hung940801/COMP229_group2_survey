@@ -1,0 +1,14 @@
+<app-page-index></app-page-index>
+
+<div class="home-survey-wrapper container d-flex flex-wrap align-items-center justify-content-start">
+    <div *ngFor ='let survey of surveys' class="card bg-light survey-card">
+        <a href="/survey_ans/{{survey.id}}">
+            <h4>
+            {{survey.name}}
+            </h4>
+            <span class="" >
+                {{survey.description}}
+            </span>
+        </a>
+    </div>
+</div>

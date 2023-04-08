@@ -1,0 +1,24 @@
+.page-header {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.btn-add-question {
+    margin-bottom: 15px;
+}
+.question-card {
+    flex-direction: initial;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+.question-info {
+    width: 70%;
+}
+.question-action {
+    width: 30%;
+    text-align: right;
+}
+.question-action button {
+    margin-left: 15px;
+}

@@ -1,6 +1,8 @@
 let express = require('express');
 const passport = require('passport');
 let router = express.Router();
+const jwt = require('jsonwebtoken');
+const APP_SECRET = 'Secret';
 
 // create the userModel instance
 let UserModel = require('../models/user');
@@ -68,6 +70,35 @@ module.exports.processLoginPage = (req, res, next) => {
     })(req, res, next);
 }
 
+module.exports.processApiLogin = (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        // server err
+        // if (err) {
+        //     return next(err);
+        // }
+        // check if there is a user login error
+
+        if (!user) {
+            // req.flash('loginMessage', "Authenticate error");
+            // return res.redirect('/login');
+            // res.send({'status': '404 not found.', "success": false})
+            res.status(404).json({ success: false });
+        } else {
+            req.login(user, (err) => {
+                //server error?
+                // if (err) {
+                //     return next(err);
+                // }
+                // return res.redirect('/surveys');
+                // res.send({'status': '200', "success": true})
+                let token = jwt.sign({ data: user.username, expiresIn: '1h' }, APP_SECRET);
+                res.status(200).json({ success: true, token: token, username: user.username });
+                // res.status(200).json({ success: true });
+            });
+        }
+    })(req, res, next);
+}
+
 module.exports.displayRegisterPage = (req, res, next) => {
     // chekc if the user is not already login
     if (!req.user) {
@@ -112,6 +143,23 @@ module.exports.processRegisterPage = (req, res, next) => {
             return passport.authenticate('local')(req, res, () => {
                 res.redirect('/surveys');
             });
+        }
+    });
+}
+
+module.exports.processApiRegister = (req, res, next) => {
+    // initialize a user object
+    let newUser = new User({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        displayName: req.body.displayName,
+    });
+    User.register(newUser, req.body.password, (err) => {
+        if (err) {
+            res.status(404).json({ success: false });
+        } else {
+            res.status(200).json({ success: true });
         }
     });
 }

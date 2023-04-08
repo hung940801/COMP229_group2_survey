@@ -1,0 +1,27 @@
+.home-survey-wrapper {
+    gap: 15px;
+}
+.home-survey-wrapper .survey-card {
+    width: calc( ( 100% / 3 ) - 30px );
+    min-height: 200px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.home-survey-wrapper .survey-card:hover {
+    box-shadow: 2px 2px 7px 0px;
+}
+.home-survey-wrapper .survey-card a {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    text-decoration: none;
+    color: #333;
+}
+.home-survey-wrapper .survey-card a h4 {
+    font-weight: 700;
+}
+.home-survey-wrapper .survey-card span {
+    color: #333;
+}

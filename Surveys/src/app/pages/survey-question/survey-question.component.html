@@ -1,0 +1,38 @@
+<div class="container survey-content">
+    <h2>{{survey.name}}</h2>
+    <div class="">
+        <form novalidate #form="ngForm" (ngSubmit)="answerSurvey(form)">
+            <div *ngFor ='let question of questions; let i = index' class="card question-wrapper">
+                <h5>
+                    Q{{i+1}}.&nbsp;{{question.question_content}}
+                </h5>
+                <div class="question-option">
+                    <label for="1">Strong Disagree</label>
+                    <input type="radio" name="question_{{question.id}}" value="1" [(ngModel)]="question.answer">
+                </div>
+                <div class="question-option">
+                    <label for="2">Disagree</label>
+                    <input type="radio" name="question_{{question.id}}" value="2" [(ngModel)]="question.answer">
+                </div>
+                <div class="question-option">
+                    <label for="3">Neutral</label>
+                    <input type="radio" name="question_{{question.id}}" value="3" [(ngModel)]="question.answer">
+                </div>
+                <div class="question-option">
+                    <label for="4">Agree</label>
+                    <input type="radio" name="question_{{question.id}}" value="4" [(ngModel)]="question.answer">
+                </div>
+                <div class="question-option">
+                    <label for="5">Strongly Agree</label>
+                    <input type="radio" name="question_{{question.id}}" value="5" [(ngModel)]="question.answer">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary m-1">
+                Submit
+            </button>
+            <button type="reset" class="btn btn-secondary" routerLink="/">
+                Cancel
+            </button>
+        </form>
+    </div>
+</div>

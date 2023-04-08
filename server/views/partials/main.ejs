@@ -1,4 +1,4 @@
-<main class="container">
+<main class="container" style="padding-bottom:5rem">
     <div class="jumbotron">
         <h1 class="display-4">Welcome to <%= title %> Page </h1>
         <% if (surveyList.length > 0) { %>
@@ -25,10 +25,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%for(let count = 0; count < questionList.length; count++) {%>
+                                        <%for(let count_ = 0; count_ < questionList.length; count_++) {%>
+                                           
+                                           
+
+
+                                           <% if(questionList[count_].survey_id==surveyList[count]._id) { %>
+                                                   
+                                                   
+
                                             <tr>
-                                                <td class="text-left"><%= questionList[count].question_content %></td>
+                                            
+                                                                                      
+                                                <td class="text-left"><%= questionList[count_].question_content %>
+                                               
+                                            
+                                            
                                             </tr>
+                                        <%}%>
                                         <%}%>
                                     </tbody>
                                 </table>
