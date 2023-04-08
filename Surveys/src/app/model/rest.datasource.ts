@@ -20,7 +20,7 @@ export class RestDataSource {
   constructor(private http: HttpClient) {
     // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
     // For production
-    this.baseUrl = `https://comp229-group2-backend.onrender.com/`;
+    this.baseUrl = `${PROTOCOL}://survey.f15.link:${PORT}/`;
   }
   // getSurveys(): Observable<Survey[]> {
   //   // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
