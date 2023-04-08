@@ -1,0 +1,15 @@
+.survey-content {
+    margin-top: 40px;
+}
+.survey-content h2 {
+    margin-bottom: 40px;
+}
+.survey-content .question-wrapper {
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: 0px;
+    border-radius: 0px;
+}
+.survey-content .question-wrapper .question-option label {
+    min-width: 200px;
+}

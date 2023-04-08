@@ -1,0 +1,21 @@
+nav {
+    box-shadow: 0 0 10px 0px;
+}
+nav .navbar-brand {
+    font-size: 24px;
+    font-weight: 700;
+}
+nav .navbar-brand img {
+    width: 80px;
+}
+nav .navbar-collapse {
+    padding-left: 50px;
+}
+nav li a {
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: 500;
+}
+nav li a i {
+    font-size: 20px;
+}
