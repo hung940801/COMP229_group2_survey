@@ -10,7 +10,7 @@
     "json": "json-server data.js -p 3500 -m authMiddleware.js"
   },
   "engines": {
-    "node": ">=16 <19"
+    "node": ">=16 <18"
   },
   "private": true,
   "dependencies": {
