@@ -18,7 +18,9 @@ export class RestDataSource {
   auth_token!: string;
   user_name!: string;
   constructor(private http: HttpClient) {
-    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+    // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+    // For production
+    this.baseUrl = `https://comp229-group2-backend.onrender.com/`;
   }
   // getSurveys(): Observable<Survey[]> {
   //   // return this.http.get<Survey[]>(this.baseUrl + "/api/surveys");
