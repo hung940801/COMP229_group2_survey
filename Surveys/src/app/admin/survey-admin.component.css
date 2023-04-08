@@ -1,0 +1,24 @@
+.page-header {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.btn-add-survey {
+    margin-bottom: 15px;
+}
+.survey-card {
+    flex-direction: initial;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+.survey-info {
+    width: 70%;
+}
+.survey-action {
+    width: 30%;
+    text-align: right;
+}
+.survey-action button {
+    margin-left: 15px;
+}

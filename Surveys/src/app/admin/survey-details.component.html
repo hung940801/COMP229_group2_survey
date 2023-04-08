@@ -1,14 +1,14 @@
-<div class="bg-primary p-2 text-white" [class.bg-warning]="editing"
+<div class="bg-primary p-2 text-white details-page-header" [class.bg-warning]="editing"
      [class.text-dark]="editing">
-    <h5>{{editing  ? "Edit" : "Create"}} Survey</h5>
+    <h5 class="display-5">{{editing  ? "Edit" : "Create"}} Survey</h5>
 </div>
 <form novalidate #form="ngForm" (ngSubmit)="save(form)">
     <div class="form-group">
-        <label>Name</label>
+        <label>Survey Title</label>
         <input class="form-control" name="name" [(ngModel)]="survey.name" />
     </div>
     <div class="form-group">
-        <label>Description</label>
+        <label>Survey Description</label>
         <textarea class="form-control" name="description"
                   [(ngModel)]="survey.description">
         </textarea>

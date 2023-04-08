@@ -1,0 +1,12 @@
+.register-form-header {
+    margin-top: 40px;
+    font-weight: 700;
+}
+.register-form-wrapper form {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.register-form-wrapper form input {
+    margin-bottom: 15px;
+}
