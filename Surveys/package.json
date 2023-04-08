@@ -5,13 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build2": "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build --prod --aot",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "json": "json-server data.js -p 3500 -m authMiddleware.js"
-  },
-  "engines": {
-    "node": "=16.19.0"
   },
   "private": true,
   "dependencies": {
